@@ -1,0 +1,99 @@
+
+public class StringSet {
+
+	private String[] elements;
+	private int n = 0;
+
+	public StringSet() {
+		elements = new String[20];
+	}
+
+	// Return true if there are no elements in this Bag.
+	public boolean isEmpty() {
+		int count = 0;
+		for (int i = 0; i < elements.length; i++) {
+			if (elements[i] == null) {
+				count++;
+			}
+		}
+		if (count == elements.length) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	// Return the number of elements in this StringSet.
+	public int size() {
+		int count = 0;
+		for (int i = 0; i < elements.length; i++) {
+			if (elements[i] == null) {
+				break;
+			}
+			count++;
+		}
+		return count;
+	}
+
+	// Return true if element is found in this StringSet, false if element does
+	// not exist
+	public boolean contains(String element) {
+		for (int i = 0; i < elements.length; i++) {
+			if (elements[i].equals(element)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// Remove the element if found and return true.
+	// Return false if this set does not contains element
+	public boolean remove(String element) {
+		int index = 0;
+		for (int i = 0; i < elements.length; i++) {
+
+		}
+		return false;
+	}
+
+	// Return a StringSet that is the union of this StringSet
+	// and the other StringSet.
+	public StringSet union(StringSet other) {
+		return new StringSet();
+	}
+
+	public String toString() {
+		String result = "[";
+		for (int index = 0; index < n - 1; index++) {
+			result += elements[index] + ", ";
+		}
+		if (n > 0)
+			result += elements[n - 1];
+		return result + "]";
+	}
+
+	public boolean insertInOrder(String element) {
+		int spotToInsert = findInsertionIndex(element);
+		// elements -> "C" | "Gee" | null | null ...
+		shiftRightFrom(spotToInsert);
+		// elements -> "C" | "C" | "Gee" | null | null ...
+		elements[spotToInsert] = element;
+		n++;
+		return true;
+	}
+
+	private int findInsertionIndex(String element) {
+		int index = 0;
+		while (index < n && element.compareTo(elements[index]) > 0) {
+			index++;
+		}
+		return index;
+	}
+
+	private void shiftRightFrom(int spotToInsert) {
+		for (int index = n; index > spotToInsert; index--) {
+			elements[index] = elements[index - 1];
+		}
+	}
+
+}

@@ -1,0 +1,75 @@
+/*
+ * CSc 127B Spring 2016, Project 04
+ *
+ * Project Name: GuitarStringStart
+ *
+ * SL Letter: C 
+ * Author: Yujia Lin 
+ * SL Name: Cody Jensen
+ *
+ * ---
+ */
+
+// This collection class model a circular queue in that it uses an array as the
+// data structure to hold elements. When when an element is added, modulus
+// arithmetic is employed to place the new element in the "last" position.
+// Another instance variable "first", keeps track of the where the first is.
+//  
+// When first is at index 6 and last is at index 1 in this ArrayQueue:
+//
+// data-> | 0.2 | 0.4 | 0.6 | -0.1 | -0.4 | 0.2 | 0.5 | 0.2 | -0.1 | -0.4 | 
+//                 |                               |
+//               last                            first
+// 
+// peek() would return 0.5 and enqueue(-0.3) would place -0.3 where the 0.6 is.
+// This portion is not really in the queue | 0.6 | -0.1 | -0.4 | 0.2 |
+//
+public class ArrayQueue {
+
+	double array[];
+	int n;
+
+	public ArrayQueue(int capacity) {
+		this.array = new double[capacity];
+	}
+
+	// The size() method returns the number of elements currently in this
+	public int size() {
+
+		return -999;
+	}
+
+	// Returns true if this ArrayQueue is empty
+	public boolean isEmpty() {
+		// TODO: Implement this method
+		return !true;
+	}
+
+	// Returns true if this ArrayQueue is full
+	public boolean isFull() {
+		// TODO: Implement this method
+		return !true;
+	}
+
+	// This method puts element into the ArrayQueue. Since the ArrayQueue is a
+	// queue, the element being inserted should be added at the end of the
+	// queue.
+	// Precondition: the Queue is not full.
+	public void enqueue(double element) {
+		// TODO: Implement this method
+	}
+
+	// Removes the first element from the ArrayQueue and returns it.
+	// Precondition: This ArrayQueue is not empty.
+	public double dequeue() {
+		// TODO: Implement this method
+		return -999.99;
+	}
+
+	// Returns the first element from the ArrayQueue but does NOT remove it.
+	// Precondition: This ArrayQueue is not empty.
+	public double peek() {
+		// TODO: Implement this method
+		return -999.99;
+	}
+}

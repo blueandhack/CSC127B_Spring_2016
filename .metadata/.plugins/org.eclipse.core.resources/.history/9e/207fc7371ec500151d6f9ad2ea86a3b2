@@ -1,0 +1,23 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+public class StringSetTest {
+
+  @Test
+  public void testInsertInOrderWithToString() {
+    StringSet set = new StringSet(); 
+    assertEquals("[]", set.toString());
+    set.insertInOrder("C");
+    assertEquals("[C]", set.toString());
+    set.insertInOrder("Gee");
+    assertEquals("[C, Gee]", set.toString());
+    set.insertInOrder("B");
+    assertEquals("[B, C, Gee]", set.toString());
+    assertTrue(set.insertInOrder("A"));
+    assertEquals("[A, B, C, Gee]", set.toString());
+    assertTrue(set.insertInOrder("65"));
+    assertEquals("[65, A, B, C, Gee]", set.toString());
+  }
+}

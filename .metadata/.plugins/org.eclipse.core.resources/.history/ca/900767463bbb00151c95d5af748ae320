@@ -1,0 +1,13 @@
+import org.junit.Test;
+
+public class PiggyBankTest {
+
+	  @Test
+	  public void testGetters() {
+	    PiggyBank oinky = new PiggyBank();  This will be an error until you add class PiggyBank to your Eclipse project
+	    assertEquals(0, oinky.getTotalNumberOfCoins());
+	    assertEquals(0, oinky.getTotalCashInBank(), 0.00001);
+	  } 
+	  // More @Test methods need here ...  Think at least one @Test method to test each method.
+	
+}

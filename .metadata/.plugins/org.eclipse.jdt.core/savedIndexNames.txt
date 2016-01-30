@@ -1,0 +1,7 @@
+INDEX VERSION 1.127+/Users/Yoga/Code/CSC127B/.metadata/.plugins/org.eclipse.jdt.core
+1057971244.index
+1015677859.index
+2854842132.index
+3938296083.index
+58759404.index
+1225262974.index

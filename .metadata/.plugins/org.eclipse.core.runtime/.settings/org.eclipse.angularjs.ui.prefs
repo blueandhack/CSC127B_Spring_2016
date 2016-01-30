@@ -1,0 +1,5 @@
+angularExpression=\#FFC600 | \#2B2B2B | null | null | null | null
+angularExpressionBorder=\#D8D8D8 | \#2B2B2B | null | null | null | null
+directiveName=\#FFFFFF | \#2B2B2B | false | null | null | null
+directiveParameterName=\#BED6FF | \#2B2B2B | null | null | null | null
+eclipse.preferences.version=1
