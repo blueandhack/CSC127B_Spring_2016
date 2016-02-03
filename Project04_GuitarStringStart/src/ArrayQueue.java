@@ -1,13 +1,15 @@
 /*
  * CSc 127B Spring 2016, Project 04
  *
- * Project Name: GuitarStringStart
+ * Project Name: GuitarString
  *
  * SL Letter: C 
  * Author: Yujia Lin 
  * SL Name: Cody Jensen
  *
  * ---
+ * The class can control a 1D array, we should use enqueue and dequeue to add and remove.
+ * Also, We use queue knowledge to solve problems.
  */
 
 // This collection class model a circular queue in that it uses an array as the
@@ -28,7 +30,7 @@ public class ArrayQueue {
 
 	private double array[];
 	private int n;
-	int last, first;
+	private int last, first;
 
 	public ArrayQueue(int capacity) {
 		this.array = new double[capacity];
@@ -98,12 +100,4 @@ public class ArrayQueue {
 		return this.array[this.first];
 	}
 
-	public String toString() {
-		String a = "";
-		for (int i = 0; i < array.length; i++) {
-			a += this.array[i] + " ";
-		}
-
-		return a;
-	}
 }

@@ -1,19 +1,21 @@
 /*
  * CSc 127B Spring 2016, Project 04
  *
- * Project Name: GuitarStringStart
+ * Project Name: GuitarString
  *
  * SL Letter: C 
  * Author: Yujia Lin 
  * SL Name: Cody Jensen
  *
  * ---
+ * The class can create a object, and it is like a guitar string, we can play the "Guitar String".
+ * Also, the class can control ArrayQueue object using below methods.
  */
 
 public class GuitarString {
 
-	// We're suggesting a few instance variables you will need.
-	private ArrayQueue buffer; // Complete ArrayQueue before this class!
+	// Set three instance variables
+	private ArrayQueue buffer;
 	private int tic;
 	private int capacity;
 
@@ -23,7 +25,6 @@ public class GuitarString {
 	// of capacity equal to the size of the array, and initializes the contents
 	// of the buffer to the values in the array.
 	public GuitarString(double[] init) {
-		// TODO: Implement this method
 		this.capacity = init.length;
 		buffer = new ArrayQueue(this.capacity);
 		for (int i = 0; i < this.capacity; i++) {
@@ -36,7 +37,7 @@ public class GuitarString {
 	// whole number. Once the ArrayQueue is created, it should be filled with
 	// 0's.
 	public GuitarString(double frequency) {
-		this.capacity = (int) (44100 / frequency);
+		this.capacity = (int) Math.ceil(44100 / frequency);
 		buffer = new ArrayQueue(this.capacity);
 		for (int i = 0; i < this.capacity; i++) {
 			buffer.enqueue(0.0);
@@ -48,7 +49,7 @@ public class GuitarString {
 	// returns a random floating point number from 0.0 to 1.0.
 	public void pluck() {
 		for (int i = 0; i < this.capacity; i++) {
-			double rand = Math.abs(Math.random() - 0.5);
+			double rand = Math.random() - 0.5;
 			this.buffer.dequeue();
 			this.buffer.enqueue(rand);
 		}
@@ -76,7 +77,7 @@ public class GuitarString {
 	// Return the total number of times tic() was called on this instance.
 	// This is a measure of how much time has elapsed.
 	public int time() {
-		return tic;
+		return this.tic;
 	}
 
 	// Return the value for the maximum capacity of the ArrayQueue

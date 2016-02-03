@@ -1,9 +1,23 @@
+/*
+ * CSc 127B Spring 2016, Project 04
+ *
+ * Project Name: GuitarString
+ *
+ * SL Letter: C 
+ * Author: Yujia Lin 
+ * SL Name: Cody Jensen
+ *
+ * ---
+ * The class is a test class. It tests ArrayQueue class, and it checks every situation.
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class ArrayQueueTest {
 
+	// Test create a ArrayQueue, and enqueue or dequeue
 	@Test
 	public void testShowAFewMethods() {
 		ArrayQueue queue = new ArrayQueue(5);
@@ -22,9 +36,6 @@ public class ArrayQueueTest {
 
 		assertTrue(queue.isFull());
 
-		// System.out.println(queue.toString());
-		// System.out.println("first:" + queue.first + " last:" + queue.last);
-
 		assertEquals(1.1, queue.dequeue(), 0.0001);
 		assertEquals(2.2, queue.dequeue(), 0.0001);
 		assertFalse(queue.isEmpty());
@@ -32,25 +43,50 @@ public class ArrayQueueTest {
 		queue.enqueue(4.4);
 		queue.enqueue(5.5);
 
-		// System.out.println(queue.toString());
-		// System.out.println("first:" + queue.first + " last:" + queue.last);
-
 		assertTrue(queue.isFull());
 
 	}
 
+	// Test if fill full array
 	@Test
 	public void testFillFullArray() {
 		ArrayQueue queue = new ArrayQueue(5);
 		queue.enqueue(1.1);
 		queue.enqueue(2.2);
-		queue.dequeue();
 		queue.enqueue(3.3);
 		queue.enqueue(4.4);
 		queue.enqueue(5.5);
+		assertTrue(queue.isFull());
 	}
 
-	// TODO: Add more @Test methods
+	// Test fill array
+	@Test
+	public void testFillArray() {
+		ArrayQueue queue = new ArrayQueue(4);
+		queue.enqueue(1.1);
+		queue.enqueue(2.2);
+		queue.enqueue(3.3);
+		queue.enqueue(4.4);
+		queue.dequeue();
+		queue.dequeue();
+		queue.dequeue();
+		queue.enqueue(3.3);
+		queue.enqueue(4.4);
+		assertEquals(3, queue.size());
+	}
 
-	// More @Tests needed here.
+	// Test dequeue a array
+	@Test
+	public void testFillArrayTwo() {
+		ArrayQueue queue = new ArrayQueue(4);
+		queue.enqueue(1.1);
+		queue.enqueue(2.2);
+		queue.enqueue(3.3);
+		queue.enqueue(4.4);
+		queue.dequeue();
+		queue.dequeue();
+		queue.dequeue();
+		queue.dequeue();
+		assertTrue(queue.isEmpty());
+	}
 }
