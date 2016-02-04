@@ -28,6 +28,7 @@
 //
 public class ArrayQueue {
 
+	// Set three instance variables
 	private double array[];
 	private int n;
 	private int last, first;
