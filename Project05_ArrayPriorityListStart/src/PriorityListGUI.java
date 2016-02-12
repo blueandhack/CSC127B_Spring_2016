@@ -28,7 +28,7 @@ public class PriorityListGUI extends JFrame {
 
   public static void main(String[] args) {
     // Set up data
-    model = new LinkedPriorityList<Movie>();
+    model = new ArrayPriorityList<Movie>();
     Movie m1 = new Movie("The Matrix Revolutions", 4);
     Movie m2 = new Movie("The Lord of the Rings, Return of the King", 5);
     Movie m3 = new Movie("Eternal Sunshine of the Spotless Mind", 4);

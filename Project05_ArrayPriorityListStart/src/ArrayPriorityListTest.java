@@ -23,7 +23,7 @@ public class ArrayPriorityListTest {
 	// Test insert elements
 	@Test
 	public void testInsertToLeft() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		// Must shift array elements in this case
 		list.insertElementAt(0, "New First");
@@ -35,56 +35,56 @@ public class ArrayPriorityListTest {
 	// when they are supposed to throw new IllegalArgumentException();
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionGetElementAtZeroWhenSizeIsZero() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.getElementAt(0);
 	}
 
 	// Get element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionGetElementAtMinusOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.getElementAt(-1);
 	}
 
 	// Insert element at 21
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionInsertElementAtTwentyOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(21, "Hello World");
 	}
 
 	// Insert element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionInsertElementAtMinusOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(-1, "Hello World");
 	}
 
 	// Raise priority of element at 1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionRaisePriorityOfAtOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.raisePriorityOf(1);
 	}
 
 	// Raise priority of element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionRaisePriorityOfAtMinusOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.raisePriorityOf(-1);
 	}
 
 	// Lower priority of element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionLowerPriorityOfAtMinusOneWhenListIsEmpty() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.lowerPriorityOf(-1);
 	}
 
 	// Lower Priority Of element at 5
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionLowerPriorityOfAtFive() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -96,7 +96,7 @@ public class ArrayPriorityListTest {
 	// Lower Priority Of element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionLowerPriorityOfAtMinusOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -108,14 +108,14 @@ public class ArrayPriorityListTest {
 	// Remove element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionRemoveElementAtMinusOneWhenListIsEmpty() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.removeElementAt(-1);
 	}
 
 	// Remove element at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionRemoveElementAtMinusOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -125,7 +125,7 @@ public class ArrayPriorityListTest {
 	// Remove element at 4
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionRemoveElementAtFour() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -135,7 +135,7 @@ public class ArrayPriorityListTest {
 	// Move element to Last at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionMoveToLastAtMinusTwo() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -145,7 +145,7 @@ public class ArrayPriorityListTest {
 	// Move element to last at 3
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionMoveToLastAtThree() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -155,7 +155,7 @@ public class ArrayPriorityListTest {
 	// Move element to top at -1
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionMoveToTopAtMinusOne() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -165,7 +165,7 @@ public class ArrayPriorityListTest {
 	// Move element to top at 3
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionMoveToTopAtThree() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -175,7 +175,7 @@ public class ArrayPriorityListTest {
 	// Test size when list is empty
 	@Test
 	public void testSizeAndIsEmpty() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		assertTrue(list.isEmpty());
 		assertEquals(0, list.size());
 	}
@@ -183,7 +183,7 @@ public class ArrayPriorityListTest {
 	// test get and remove element
 	@Test
 	public void testGetAndRemoveElementAndIsNotEmpty() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -207,7 +207,7 @@ public class ArrayPriorityListTest {
 	// test lower and raise, move to last and top
 	@Test
 	public void testLowerAndRaiseAlsoMoveToLastAndTop() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -254,7 +254,7 @@ public class ArrayPriorityListTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testToArray() {
-		PriorityList<String> list = new LinkedPriorityList<String>();
+		PriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "First");
 		list.insertElementAt(0, "New First");
 		list.insertElementAt(0, "Hello");
@@ -270,7 +270,7 @@ public class ArrayPriorityListTest {
 	// test toArray
 	@Test
 	public void toArrayTest() {
-		LinkedPriorityList<Integer> list = new LinkedPriorityList<Integer>();
+		ArrayPriorityList<Integer> list = new ArrayPriorityList<Integer>();
 		list.insertElementAt(0, 1);
 		list.insertElementAt(1, 2);
 		list.insertElementAt(2, 3);
@@ -293,7 +293,7 @@ public class ArrayPriorityListTest {
 	// test grow array
 	@Test
 	public void growArrayTest() {
-		LinkedPriorityList<String> list = new LinkedPriorityList<String>();
+		ArrayPriorityList<String> list = new ArrayPriorityList<String>();
 		list.insertElementAt(0, "1");
 		list.insertElementAt(1, "2");
 		list.insertElementAt(2, "3");
