@@ -20,13 +20,13 @@
  * @param <E>
  *            The type of all elements stored in this collection
  */
-public class LinkedPriorityList<E> implements PriorityList<E> {
+public class ArrayPriorityList<E> implements PriorityList<E> {
 
 	private Object[] data; // The data structure storing elements
 	private int n; // The number of meaningful elements
 
 	// Create an empty list with zero elements
-	public LinkedPriorityList() {
+	public ArrayPriorityList() {
 		data = new Object[20]; // Do NOT increase the initial capacity
 		n = 0;
 	}
