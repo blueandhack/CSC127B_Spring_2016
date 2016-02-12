@@ -8,6 +8,7 @@
  * SL Name: Cody Jensen
  *
  * ---
+ * The class is interface class, it is like a template. We should contain all of method for class.
  */
 
 /**

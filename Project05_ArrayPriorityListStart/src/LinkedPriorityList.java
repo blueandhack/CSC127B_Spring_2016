@@ -8,6 +8,8 @@
  * SL Name: Cody Jensen
  *
  * ---
+ * This project implement a collection class ArrayPriorityList<E> using an array instance variable.
+ * We can use the class create a object that is a list. We should fill out some dates to the list.
  */
 
 /**
@@ -18,15 +20,25 @@
  * @param <E>
  *            The type of all elements stored in this collection
  */
-public class ArrayPriorityList<E> implements PriorityList<E> {
+public class LinkedPriorityList<E> implements PriorityList<E> {
 
 	private Object[] data; // The data structure storing elements
 	private int n; // The number of meaningful elements
 
 	// Create an empty list with zero elements
-	public ArrayPriorityList() {
+	public LinkedPriorityList() {
 		data = new Object[20]; // Do NOT increase the initial capacity
 		n = 0;
+	}
+
+	// Increases the capacity of the array by 20 elements.
+	private void growArray() {
+		Object[] temp = new Object[this.size() + 20];
+
+		for (int i = 0; i < n; i++)
+			temp[i] = this.data[i];
+
+		this.data = temp;
 	}
 
 	/**
@@ -35,8 +47,7 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @return The number of elements in this PriorityList
 	 */
 	public int size() {
-		// TODO Auto-generated method stub
-		return -1;
+		return this.n;
 	}
 
 	/**
@@ -45,7 +56,9 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @return true if size() == 0 or false if size() > 0
 	 */
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
+		if (this.size() == 0) {
+			return true;
+		}
 		return false;
 	}
 
@@ -62,7 +75,19 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @throws IllegalArgumentException
 	 */
 	public void insertElementAt(int index, E el) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (index > this.size() || index < 0) {
+			throw new IllegalArgumentException();
+		}
+
+		if (this.size() == data.length)
+			this.growArray();
+
+		for (int i = size(); i > index; i--) {
+			this.data[i] = this.data[i - 1];
+		}
+
+		this.data[index] = el;
+		this.n++;
 	}
 
 	/**
@@ -76,9 +101,12 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @return A reference to the element at index index.
 	 * @throws IllegalArgumentException
 	 */
+	@SuppressWarnings("unchecked")
 	public E getElementAt(int index) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		if (index >= this.size() || index < 0) {
+			throw new IllegalArgumentException();
+		}
+		return (E) this.data[index];
 	}
 
 	/**
@@ -91,7 +119,15 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @throws IllegalArgumentException
 	 */
 	public void removeElementAt(int index) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (index > this.size() - 1 || index < 0) {
+			throw new IllegalArgumentException();
+		}
+		this.data[index] = null;
+		for (int i = index; i < this.size() - 1; i++) {
+			this.data[i] = this.data[i + 1];
+		}
+		this.data[this.size() - 1] = null;
+		this.n--;
 	}
 
 	/**
@@ -106,7 +142,16 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @throws IllegalArgumentException
 	 */
 	public void lowerPriorityOf(int index) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (index > this.size() - 1 || index < 0) {
+			throw new IllegalArgumentException();
+		}
+
+		if (index >= 0 && index < this.size() - 1) {
+			Object temp = new Object();
+			temp = this.data[index + 1];
+			this.data[index + 1] = this.data[index];
+			this.data[index] = temp;
+		}
 	}
 
 	/**
@@ -121,7 +166,16 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @throws IllegalArgumentException
 	 */
 	public void raisePriorityOf(int index) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (index > this.size() - 1 || index < 0) {
+			throw new IllegalArgumentException();
+		}
+
+		if (index > 0 && index <= this.size() - 1) {
+			Object temp = new Object();
+			temp = this.data[index - 1];
+			this.data[index - 1] = this.data[index];
+			this.data[index] = temp;
+		}
 	}
 
 	/**
@@ -133,8 +187,14 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @return An array of Objects where capacity == size()
 	 */
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		Object[] newData = new Object[this.size()];
+
+		for (int i = 0; i < this.size(); i++) {
+			Object temp = this.data[i];
+			newData[i] = temp;
+		}
+
+		return newData;
 	}
 
 	/**
@@ -149,7 +209,17 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @throws IllegalArgumentException
 	 */
 	public void moveToLast(int index) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (index < 0 || index > this.size() - 1)
+			throw new IllegalArgumentException();
+
+		if (index < this.size() - 1) {
+			Object temp = this.data[index];
+
+			for (int i = index; i < this.size() - 1; i++)
+				this.data[i] = this.data[i + 1];
+
+			this.data[this.size() - 1] = temp;
+		}
 	}
 
 	/**
@@ -164,6 +234,16 @@ public class ArrayPriorityList<E> implements PriorityList<E> {
 	 * @throws IllegalArgumentException
 	 */
 	public void moveToTop(int index) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (index < 0 || index > this.size() - 1)
+			throw new IllegalArgumentException();
+
+		if (index > 0) {
+			Object temp = this.data[index];
+
+			for (int i = index; i > 0; i--)
+				this.data[i] = this.data[i - 1];
+
+			this.data[0] = temp;
+		}
 	}
 }
