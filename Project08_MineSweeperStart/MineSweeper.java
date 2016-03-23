@@ -105,19 +105,20 @@ public class MineSweeper implements MineSweeperModel {
 				int index[][] = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 },
 						{ 0, -1 } };
 
-				int count = 0;
+				// int count = 0;
 				for (int k = 0; k < index.length; k++) {
 					try {
 						Boolean temp = board[i + index[k][0]][j + index[k][1]].isMine;
 						if (temp) {
-							count++;
+							// count++;
+							board[i][j].mineNeighbors++;
 						}
 					} catch (Exception e) {
 						;
 					}
 
 				}
-				board[i][j].mineNeighbors = count;
+				// board[i][j].mineNeighbors = count;
 
 			}
 
