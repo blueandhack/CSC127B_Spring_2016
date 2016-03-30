@@ -1,3 +1,4 @@
+
 /**
  * ExpressionTree objects are built by performing a pre-order traversal over prefix 
  * expressions passed as a String object.   You job is to add several methods that you test well.  
@@ -137,7 +138,7 @@ public class ExpressionTree {
 		if (t.left == null && t.right == null) {
 			return 1;
 		}
-		return nodeCount(t.left) + nodeCount(t.right);
+		return nodeCount(t.left) + 1 + nodeCount(t.right);
 	}
 
 	public int leafCount() {
@@ -179,7 +180,6 @@ public class ExpressionTree {
 		if (t.left == null && t.right == null) {
 			return 0;
 		}
-		return nodesAtLevel(t.left, level, currLevel + 1)
-				+ nodesAtLevel(t.right, level, currLevel + 1);
+		return nodesAtLevel(t.left, level, currLevel + 1) + nodesAtLevel(t.right, level, currLevel + 1);
 	}
 }

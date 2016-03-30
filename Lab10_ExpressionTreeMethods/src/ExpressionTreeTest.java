@@ -1,3 +1,4 @@
+
 /*
  * A unit test for ExpressionTree
  */
@@ -66,7 +67,7 @@ public class ExpressionTreeTest {
 		ExpressionTree et1 = new ExpressionTree("99");
 		assertEquals(1, et1.nodeCount());
 		ExpressionTree et7 = new ExpressionTree("- * / 4 3 5 6");
-		assertEquals(4, et7.nodeCount());
+		assertEquals(7, et7.nodeCount());
 	}
 
 	@Test
