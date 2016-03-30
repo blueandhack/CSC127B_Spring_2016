@@ -120,24 +120,16 @@ public class RecursionFun {
 	 * loops.
 	 */
 	public boolean nestParen(String str) {
-		return nestParen(str, 0, str.length() - 1);
-	}
-
-	// private method for nestParen, and it is a helper method
-	private boolean nestParen(String str, int index, int lastIndex) {
 		if (str.length() == 0) {
 			return true;
 		}
-		if (str.length() % 2 == 1) {
+		if (str.length() % 2 != 0) {
 			return false;
 		}
-		if (str.charAt(index) != '(' && str.charAt(lastIndex) != ')') {
-			return false;
+		if (str.substring(0, 1).equals("(") && str.substring(str.length() - 1, str.length()).equals(")")) {
+			return nestParen(str.substring(1, str.length() - 1));
 		}
-		if (index == lastIndex - 1) {
-			return true;
-		}
-		return nestParen(str, index + 1, lastIndex - 1);
+		return false;
 	}
 
 	/*
@@ -146,28 +138,17 @@ public class RecursionFun {
 	 * been reduced to a single char.
 	 */
 	public String noAdjacents(String str) {
-		return noAdjacents(str, 0);
-	}
-
-	// private method for noAdjacents, and it is a helper method
-	private String noAdjacents(String str, int index) {
 		if (str.length() == 0) {
 			return "";
 		}
-		if (index == 0) {
-			return str.substring(index, index + 1) + noAdjacents(str, index + 1);
+		if (str.length() == 1) {
+			return str;
 		}
-		if (index == str.length() - 1) {
-			if (!str.substring(index - 1, index).equals(str.substring(index))) {
-				return str.substring(index);
-			} else {
-				return "";
-			}
+		if (str.substring(0, 1).equals(str.substring(1, 2))) {
+			return noAdjacents(str.substring(1));
 		}
-		if (str.substring(index - 1, index).equals(str.substring(index, index + 1))) {
-			return noAdjacents(str, index + 1);
-		}
-		return str.substring(index, index + 1) + noAdjacents(str, index + 1);
+		return str.substring(0, 1) + noAdjacents(str.substring(1));
+
 	}
 
 	/*
@@ -188,18 +169,12 @@ public class RecursionFun {
 	 * with hexadecimal numbers provides a pattern.
 	 */
 	public String intWithCommas(int n) {
-		return intWithCommas("" + n, 1);
-	}
-
-	// private method for intWithCommas, and it is a helper method
-	private String intWithCommas(String str, int index) {
-		if (str.length() - index == 0) {
-			return str.substring(0, 1);
+		String number = n + "";
+		if (n / 1000 == 0) {
+			return "" + n % 1000;
+		} else {
+			return intWithCommas(n / 1000) + "," + number.substring(number.length() - 3, number.length());
 		}
-		if (index % 3 == 0) {
-			return intWithCommas(str, index + 1) + "," + str.substring(str.length() - index, str.length() - index + 1);
-		}
-		return intWithCommas(str, index + 1) + str.substring(str.length() - index, str.length() - index + 1);
 	}
 
 	/*

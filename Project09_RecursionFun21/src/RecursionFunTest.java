@@ -111,6 +111,7 @@ public class RecursionFunTest {
 	// test for No.10
 	@Test
 	public void testIntWithCommas() {
+		assertEquals("10", rf.intWithCommas(10));
 		assertEquals("999", rf.intWithCommas(999));
 		assertEquals("1,234", rf.intWithCommas(1234));
 		assertEquals("1,007", rf.intWithCommas(1007));
