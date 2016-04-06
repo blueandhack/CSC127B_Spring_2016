@@ -23,6 +23,11 @@ public class LinkedList<E extends Comparable<E>> {
 			next = null;
 		}
 
+		public Node(E element, Node ref) {
+			data = element;
+			next = ref;
+		}
+
 	}
 
 	// instance variables
@@ -128,22 +133,21 @@ public class LinkedList<E extends Comparable<E>> {
 	 * next to the original. The size should increase for each element.
 	 */
 	public void duplicateAll(E el) {
-		duplicateAll(first, el);
+		duplicateAll(0, first, el);
 	}
 
 	// private method for duplicateAll, and it is a helper method
-	private void duplicateAll(Node ref, E el) {
-		if (ref.next == null) {
+	private void duplicateAll(int index, Node ref, E el) {
+		if (index == size()) {
 			return;
-		}
-		if (ref.data.equals(el)) {
-			Node temp = ref.next;
-			ref.next = new Node(el);
-			ref.next.next = temp;
-			n++;
-			duplicateAll(temp, el);
 		} else {
-			duplicateAll(ref.next, el);
+			if (ref.data.equals(el)) {
+				n++;
+				ref.next = new Node(el, ref.next);
+				duplicateAll(index + 2, ref.next.next, el);
+			} else {
+				duplicateAll(index + 1, ref.next, el);
+			}
 		}
 	}
 
