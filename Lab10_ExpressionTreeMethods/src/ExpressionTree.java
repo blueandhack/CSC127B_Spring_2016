@@ -161,12 +161,10 @@ public class ExpressionTree {
 	private boolean isFull(TreeNode t) {
 		if (t.left == null && t.right == null) {
 			return true;
+		} else if ((t.left == null && t.right != null) || (t.left != null && t.right == null)) {
+			return false;
 		}
-		if (t.left == null && t.right != null)
-			return false;
-		if (t.left != null && t.right == null)
-			return false;
-		return isFull(t.right) == isFull(t.right);
+		return isFull(t.right) && isFull(t.right);
 	}
 
 	public int nodesAtLevel(int level) {
