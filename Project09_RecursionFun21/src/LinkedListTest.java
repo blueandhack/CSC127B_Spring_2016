@@ -90,6 +90,9 @@ public class LinkedListTest {
 		assertEquals(6, list.size());
 
 		LinkedList<Integer> listTwo = new LinkedList<Integer>();
+		listTwo.duplicateAll(2);
 		assertEquals(0, listTwo.occurencesOf(1));
+		LinkedList<String> listThree = new LinkedList<String>();
+		assertEquals(0, listThree.occurencesOf(""));
 	}
 }
