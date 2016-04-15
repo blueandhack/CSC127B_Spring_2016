@@ -51,10 +51,10 @@ public class ExpressionTreeTest {
 		ExpressionTree et8 = new ExpressionTree("- + * 12 11 10 / %  9 8 7");
 		assertEquals("12 * 11 + 10 - 9 % 8 / 7", et8.inFix());
 		//
-		// root-> "-"
-		// / \
-		// "+" "/"
-		// / \ / \
+		// -------root-> "-"
+		// ------/ --- \
+		// --- "+" -- "/"
+		// ---/ \ ---/ \
 		// "*" "10" "%" "7"
 		// / \ / \
 		// "12" "11" "9" "8"
@@ -82,6 +82,12 @@ public class ExpressionTreeTest {
 		ExpressionTree et7 = new ExpressionTree("- + * 12 11 10 / %  9 8 7");
 		assertEquals("-+*121110/%987", et7.preOrder());
 
+	}
+
+	@Test
+	public void testOrder() {
+		ExpressionTree et7 = new ExpressionTree("- + * 12 11 10 / %  9 8 7");
+		System.out.println(et7.inOrder());
 	}
 
 	@Test

@@ -113,10 +113,24 @@ public class ExpressionTree {
 	}
 
 	private String preOrder(TreeNode t) {
+		if (t == null) {
+			return "";
+		}
+		// if (t.left == null && t.right == null) {
+		// return t.data;
+		// }
+		return t.data + preOrder(t.left) + preOrder(t.right);
+	}
+
+	public String inOrder() {
+		return inOrder(root);
+	}
+
+	private String inOrder(TreeNode t) {
 		if (t.left == null && t.right == null) {
 			return t.data;
 		}
-		return t.data + preOrder(t.left) + preOrder(t.right);
+		return inOrder(t.left) + t.data + inOrder(t.right);
 	}
 
 	public String postOrder() {
@@ -159,7 +173,7 @@ public class ExpressionTree {
 	}
 
 	private boolean isFull(TreeNode t) {
-		if (t.left == null && t.right == null) {
+		if (t == null) {
 			return true;
 		} else if ((t.left == null && t.right != null) || (t.left != null && t.right == null)) {
 			return false;
